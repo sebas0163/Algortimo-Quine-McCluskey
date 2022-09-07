@@ -23,6 +23,7 @@ def trunc(table):
 ## Step 3: Combines by quantity of 1's
 def combine_by_number(table):
     table = trunc(table)
+    table_0 = []
     table_1 = []
     table_2 = []
     table_3 = []
@@ -31,7 +32,9 @@ def combine_by_number(table):
     table_6 = []
     x = len(table[0])-1
     for i in range(len(table)):
-        if (table[i][x] == 1):
+        if (table[i][x] == 0):
+            table_0 += [table[i][:-1]]
+        elif (table[i][x] == 1):
             table_1 += [table[i][:-1]]
         elif (table[i][x] == 2):
             table_2 += [table[i][:-1]]
@@ -43,7 +46,7 @@ def combine_by_number(table):
             table_5 += [table[i][:-1]]
         elif (table[i][x] == 6):
             table_6 += [table[i][:-1]]
-    return [table_1, table_2, table_3, table_4, table_5, table_6]
+    return [table_0, table_1, table_2, table_3, table_4, table_5, table_6]
 # Finish step 3
 
 # Step 4: Identify changes and creates "Don't cares"
@@ -115,7 +118,7 @@ def combine_minterms(table):
     for i in range(len(table)):
         minterms_aux = []
         for j in range(len(table[i][x])):
-            minterms_aux += table[i][x][j]
+            minterms_aux += [table[i][x][j]]
         table_aux[0][i] += [(minterms_aux)]
     return table_aux
 
@@ -235,6 +238,10 @@ def main(table):
     table = remove_one(table)
 
     ####################################
+    
+    #table = combine_groups(table)
+    #table = combine_groups(table)
+    #table = combine_groups(table)
 
     table_aux = []
     while(table != []):
@@ -260,5 +267,7 @@ def main(table):
     #return table
     return output
 
-print(main([[0,0,0,0,0],[0,0,0,1,1],[0,0,1,0,0],[0,0,1,1,1],[0,1,0,0,1],[0,1,0,1,1],[0,1,1,0,0],[0,1,1,1,0],[1,0,0,0,0],[1,0,0,1,1],[1,0,1,0,0],[1,0,1,1,1],[1,1,0,0,1],[1,1,0,1,1],[1,1,1,0,1],[1,1,1,1,1]]))
-
+#print(main([[0,0,0,0,0], [0,0,0,1,0], [0,0,1,0,1], [0,0,1,1,0], [0,1,0,0,0], [0,1,0,1,0], [0,1,1,0,1], [0,1,1,1,0], [1,0,0,0,1], [1,0,0,1,1], [1,0,1,0,1], [1,0,1,1,1], [1,1,0,0,0], [1,1,0,1,0], [1,1,1,0,1], [1,1,1,1,1]]))
+#print(main([[0,0,0,0,0],[0,0,0,1,1],[0,0,1,0,0],[0,0,1,1,1],[0,1,0,0,1],[0,1,0,1,1],[0,1,1,0,0],[0,1,1,1,0],[1,0,0,0,0],[1,0,0,1,1],[1,0,1,0,0],[1,0,1,1,1],[1,1,0,0,1],[1,1,0,1,1],[1,1,1,0,1],[1,1,1,1,1]]))
+#print(main([[0,0,0,0,0,1], [0,0,0,0,1,1], [0,0,0,1,0,1], [0,0,0,1,1,1], [0,0,1,0,0,0], [0,0,1,0,1,0], [0,0,1,1,0,1], [0,0,1,1,1,0], [0,1,0,0,0,1], [0,1,0,0,1,1], [0,1,0,1,0,1], [0,1,0,1,1,1], [0,1,1,0,0,0], [0,1,1,0,1,0], [0,1,1,1,0,0], [0,1,1,1,1,0], [1,0,0,0,0,0], [1,0,0,0,1,1], [1,0,0,1,0,0], [1,0,0,1,1,0], [1,0,1,0,0,1], [1,0,1,0,1,1], [1,0,1,1,0,0], [1,0,1,1,1,1], [1,1,0,0,0,0], [1,1,0,0,1,1], [1,1,0,1,0,0], [1,1,0,1,1,0], [1,1,1,0,0,1], [1,1,1,0,1,0], [1,1,1,1,0,1], [1,1,1,1,1,1]]))
+#print(main([[0, 0, 0, 0, 0], [0, 0, 0, 1, 1], [0, 0, 1, 0, 1], [0, 0, 1, 1, 1], [0, 1, 0, 0, 0], [0, 1, 0, 1, 0], [0, 1, 1, 0, 0], [0, 1, 1, 1, 0], [1, 0, 0, 0, 0], [1, 0, 0, 1, 0], [1, 0, 1, 0, 0], [1, 0, 1, 1, 0], [1, 1, 0, 0, 0], [1, 1, 0, 1, 0], [1, 1, 1, 0, 0], [1, 1, 1, 1, 0]]))
