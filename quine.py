@@ -75,10 +75,6 @@ def combine_groups(table):
                 if (x != -1):
                     table_aux += [x + [(first_minterm, second_minterm)]]
     return table_aux
-                        
-
-
-#print(combine_groups([[[0, 0, 0, 1], [0, 1, 0, 0]], [[0, 0, 1, 1], [0, 1, 0, 1], [1, 0, 0, 1], [1, 1, 0, 0]], [[1, 0, 1, 1], [1, 1, 0, 1], [1, 1, 1, 0]], [[1, 1, 1, 1]], [], []]))
 ## Finish step 4
 
 ## Step 0: Add last item to every list in table
@@ -97,9 +93,7 @@ def get_minterms(table):
 
 def remove_repeats(table):
     table_aux = []
-    for x in table:
-        if x not in table_aux:
-            table_aux.append(x)
+    [table_aux.append(x) for x in table if x not in table_aux]
     return table_aux
 
 def remove_one(table):
@@ -115,11 +109,122 @@ def remove_last(table):
         table_aux += [table[i][:-1]]
     return table_aux
 
-#print(remove_repeats([['x', 0, 'x', 1], ['x', 'x', 0, 1], ['x', 0, 'x', 1], ['x', 'x', 0, 1], ['x', 1, 0, 'x'], ['x', 1, 0, 'x'], [1, 'x', 'x', 1], [1, 'x', 'x', 1], [1, 1, 'x', 'x'], [1, 1, 'x', 'x']]))
-## Finish step 6
+def combine_minterms(table):
+    table_aux = [remove_last(table)]
+    x = len(table[0])-1
+    for i in range(len(table)):
+        minterms_aux = []
+        for j in range(len(table[i][x])):
+            minterms_aux += table[i][x][j]
+        table_aux[0][i] += [(minterms_aux)]
+    return table_aux
+
+def sort_minterms(table):
+    table_aux = []
+    x = len(table[0][0])-1
+    for i in range(len(table[0])):
+        table[0][i][x].sort()
+    return table
+
+def get_minterms(table):
+    minterms = []
+    x = len(table[0])-1
+    for i in range(len(table)):
+        minterms += [table[i][x]]
+    return minterms
+
+def final_combine(minterms):
+    minterms_aux = []
+    for i in range(len(minterms)):
+        for j in range(len(minterms[i])):
+                minterms_aux += [minterms[i][j]]
+    return minterms_aux
+
+def remove_repeated_minterms(minterms):
+    minterms_aux = []
+    for i in minterms:
+        count = 0
+        for j in minterms:
+            if i == j:
+                count += 1
+        if count == 1:
+            minterms_aux += [i]
+    return minterms_aux
+
+def get_essentials(table, minterms):
+    table_aux = []
+    x = len(table[0])-1
+    for i in range(len(table)):
+        for j in range(len(table[i][x])):
+            if table[i][x][j] in minterms:
+                table_aux += [table[i]]
+    return table_aux
+
+def convert_to_output(table):
+    string = ''
+    print(table)
+    for i in range(len(table)):
+        first_term = True
+        for j in range(len(table[i])):
+    
+            if table[i][j] != 'x' and first_term == False:
+                string += '⋅'
+
+            if j == 0:
+                if table[i][j] == 1:
+                    string += 'a'
+                    first_term = False
+                if table[i][j] == 0:
+                    string += 'a\''
+                    first_term = False
+            elif j == 1:
+                if table[i][j] == 1:
+                    string += 'b'
+                    first_term = False
+                if table[i][j] == 0:
+                    string += 'b\''
+                    first_term = False
+            elif j == 2:
+                if table[i][j] == 1:
+                    string += 'c'
+                    first_term = False
+                if table[i][j] == 0:
+                    string += 'c\''
+                    first_term = False
+            elif j == 3:
+                if table[i][j] == 1:
+                    string += 'd'
+                    first_term = False
+                if table[i][j] == 0:
+                    string += 'd\''
+                    first_term = False
+            elif j == 4:
+                if table[i][j] == 1:
+                    string += 'e'
+                    first_term = False
+                if table[i][j] == 0:
+                    string += 'e\''
+                    first_term = False
+            elif j == 5:
+                if table[i][j] == 1:
+                    string += 'f'
+                    first_term = False
+                if table[i][j] == 0:
+                    string += 'f\''
+                    first_term = False
+
+        if i != len(table)-1:
+            string += ' + '
+    return string
 
 
+##____________
+##__/ Main /__
 def main(table):
+    # Get number of variables [4,6]
+    variables = len(table)
+    variables = variables**(1/2)
+
     # First assigns minterms values
     table = add_minterm_element(table)
 
@@ -139,49 +244,21 @@ def main(table):
     table = table_aux
     table = remove_last(table)
 
-    table = remove_repeats(table)
+    table = combine_minterms(table)
+    table = sort_minterms(table)
+    table = remove_repeats(table[0])
 
-    #print("-------")
-    #print(getLen(table))
-    #x = getLen(table)
-    #print("-------")
+    minterms = get_minterms(table)
+    minterms = final_combine(minterms)
+    minterms = remove_repeated_minterms(minterms)
 
-    #print(table)
-
-    #print("-------")
-    #print(simplify(table, x))
-    #print("-------")
-
-    #table = combine_groups(combine_by_number(trunc(table)))
-    #table = combine_groups(combine_by_number(trunc(table)))
-    #table = combine_groups(combine_by_number(trunc(table)))
-
-
-    #table = trunc(table)
-    #table = combine_by_number(table)
-    #table = combine_groups(table)
-
-    #table = trunc(table)
-    #table = combine_by_number(table)
-    #table = combine_groups(table)
-
-    #table = trunc(table)
-    #table = combine_by_number(table)
-    #table = combine_groups(table)
-
-
-    #table = remove_repeats(table)
-
-
-    ######
-    # Se debe de hacer recursivo hasta obtener todos los primos implicantes
-
-
-    # Se obtienen los primos implicantes esenciales
-    # -> Codigo
-
+    primeEssentials = get_essentials(table, minterms)
+    table = remove_last(primeEssentials)
     
-    return table
+    output = convert_to_output(table)
+
+    #return table
+    return output
 
 print(main([[0,0,0,0,0],[0,0,0,1,1],[0,0,1,0,0],[0,0,1,1,1],[0,1,0,0,1],[0,1,0,1,1],[0,1,1,0,0],[0,1,1,1,0],[1,0,0,0,0],[1,0,0,1,1],[1,0,1,0,0],[1,0,1,1,1],[1,1,0,0,1],[1,1,0,1,1],[1,1,1,0,1],[1,1,1,1,1]]))
 
