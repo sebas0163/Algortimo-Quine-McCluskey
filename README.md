@@ -18,9 +18,9 @@ Desarrollado por los estudiantes:
 - [x] [Investigación de nueva tecnología: jupyter](https://github.com/sebas0163/Algortimo-Quine-McCluskey/issues/5)
   - Investigar acerca de Jupyter y de cómo esta puede ser implementada al actual proyecto.
   - Investigar cómo exportar un cuaderno en Jupyter para su posterior publicación en un repositorio de Github.
-- [ ] [Vinculación del algoritmo Expresso (de C a python)](https://github.com/sebas0163/Algortimo-Quine-McCluskey/issues/6)
+- [x] [Vinculación del algoritmo Expresso (de C a python)](https://github.com/sebas0163/Algortimo-Quine-McCluskey/issues/6)
   - Vincular el algoritmo Expresso mediante su implementación en C y posterior conexión a Python.
-- [ ] [Investigación de vinculación de bibliotecas](https://github.com/sebas0163/Algortimo-Quine-McCluskey/issues/7)
+- [x] [Investigación de vinculación de bibliotecas](https://github.com/sebas0163/Algortimo-Quine-McCluskey/issues/7)
   - Investigar acerca de cómo una biblioteca puede ser exportada desde el lenguaje de programación C e importada en el lenguaje de programación Python.
 * Para observer la distribución de tareas, dirigirse a la sección de [issues](https://github.com/sebas0163/Algortimo-Quine-McCluskey/issues)
 
