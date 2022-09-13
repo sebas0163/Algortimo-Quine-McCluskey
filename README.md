@@ -8,14 +8,14 @@ Desarrollado por los estudiantes:
 ## Tareas
 - [x] [Creación del repositorio](https://github.com/sebas0163/Algortimo-Quine-McCluskey/issues/1)
   - Creación de un repositorio en Github donde almacenar todo el desarrollo del proyecto.
-- [ ] [Creación del cuaderno de jupyter en el repositorio](https://github.com/sebas0163/Algortimo-Quine-McCluskey/issues/2)
+- [x] [Creación del cuaderno de jupyter en el repositorio](https://github.com/sebas0163/Algortimo-Quine-McCluskey/issues/2)
   - Creación de un cuaderno em Jupyter que permita correr el programa desde un navegador web.
-- [ ] [Implementación del algoritmo](https://github.com/sebas0163/Algortimo-Quine-McCluskey/issues/3)
+- [x] [Implementación del algoritmo](https://github.com/sebas0163/Algortimo-Quine-McCluskey/issues/3)
   - Implementación del algoritmo Quine McCluskey para simplificar expresiones booleanas.
-- [ ] [Implementación de interfaz gráfica](https://github.com/sebas0163/Algortimo-Quine-McCluskey/issues/4)
+- [x] [Implementación de interfaz gráfica](https://github.com/sebas0163/Algortimo-Quine-McCluskey/issues/4)
   - Investigar acerca de la biblioteca gráfica TKinter.
   - Implementar una interfaz gráfica mediante esta biblioteca que permita visualizar e introducir valores para el algoritmo Quine McCluskey.
-- [ ] [Investigación de nueva tecnología: jupyter](https://github.com/sebas0163/Algortimo-Quine-McCluskey/issues/5)
+- [x] [Investigación de nueva tecnología: jupyter](https://github.com/sebas0163/Algortimo-Quine-McCluskey/issues/5)
   - Investigar acerca de Jupyter y de cómo esta puede ser implementada al actual proyecto.
   - Investigar cómo exportar un cuaderno en Jupyter para su posterior publicación en un repositorio de Github.
 - [ ] [Vinculación del algoritmo Expresso (de C a python)](https://github.com/sebas0163/Algortimo-Quine-McCluskey/issues/6)
